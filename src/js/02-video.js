@@ -5,18 +5,15 @@ const iframe = document.querySelector('#vimeo-player');
 
 const player = new Player(iframe);
 
-// const savedTime = localStorage.getItem('videoplayer-current-time') || 0;
 const SAVED_TIME = 'videoplayer-current-time';
-// console.log(savedTime);
-
     
-function timeStop(timeupdate) {
+function timeSaver(timeupdate) {
     let pause = timeupdate.seconds;
-    // console.log(pause);
     localStorage.setItem(SAVED_TIME, pause);
+    // console.log(pause);
 }
 
-player.on('timeupdate', throttle(timeStop, 1000));
+player.on('timeupdate', throttle(timeSaver, 1000));
 
 let savedTime = localStorage.getItem(SAVED_TIME);
 
