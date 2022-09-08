@@ -13,7 +13,6 @@ formEl.addEventListener('input', throttle(onFormInput, 500));
 function onFormInput(evt) {
     formData[evt.target.name] = evt.target.value;
     const message = JSON.stringify(formData);
-    console.log(message);
     localStorage.setItem(STORAGE_KEY, message);
 }
 
@@ -33,7 +32,6 @@ function onFormSubmit(evt) {
 function backForm() {
     const savedMessage = localStorage.getItem(STORAGE_KEY);
     if (savedMessage) {
-        console.log(savedMessage);
         formData = JSON.parse(savedMessage);
         formEl.email.value = formData.email || '';
         formEl.message.value = formData.message || '';
